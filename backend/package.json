@@ -1,0 +1,21 @@
+{
+    "name": "mean",
+    "version": "1.0.0",
+    "description": "Coursera MEAN application",
+    "author": "Olexandr Kononchuk <oleksandrkononchuk@gmail.com>",
+    "private": true,
+    "license": "MIT",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon src/server.js"
+    },
+    "dependencies": {
+        "express": "~4.14.0",
+        "mongoose": "~4.13.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.3",
+        "tslint": "^5.11.0",
+        "typescript": "^3.0.3"
+    }
+}
