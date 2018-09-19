@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host=angular --public-host=http://172.11.0.4:4200 --configuration hmr",
+    "start": "ng serve --host=node.loc --public-host=http://172.11.0.4:4200 --configuration hmr",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

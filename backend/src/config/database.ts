@@ -1,6 +1,4 @@
-// config/database.js
-module.exports = {
-
+// config/database.ts
+export default {
   'url' : 'mongodb://mongo:27017/user',
-
 };

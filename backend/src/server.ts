@@ -2,15 +2,16 @@
 
 // set up ======================================================================
 // get all the tools we need
-const express  = require('express');
+import * as express from 'express';
 const app      = express();
 const port     = 8080;
 const path     = require("path");
-const mongoOp  =   require("./models/mongo");
 const router   =   express.Router();
 
+import {User} from './models/mongo';
+
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://172.11.0.4:4200");
+    res.header("Access-Control-Allow-Origin", "http://node.loc:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -26,12 +27,12 @@ app.get('/test', function (req, res) {
 router.route("/users")
   .get(function(req,res){
     let response = {};
-    mongoOp.find({}, (err,data) => {
+    User.find({}, (err,data) => {
       // Mongo command to fetch all data from collection.
       if(err) {
-        response = {"error" : true,"message" : "Error fetching data"};
+        response = {"error" : true, "message": "Error fetching data"};
       } else {
-        response = {"error" : false,"message" : data};
+        response = {"error" : false, "message": data};
       }
       res.json(response);
     });

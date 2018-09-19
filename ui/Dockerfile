@@ -1,3 +1,3 @@
-FROM node:9.11-alpine as node
+FROM node:10.10-alpine as node
 
 RUN npm i npm@latest -g
