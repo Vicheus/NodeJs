@@ -1,7 +1,7 @@
 version: '3.1'
 services:
     backend:
-        image: node-coursera
+        image: gcr.io/bidder-test-216816/node
         container_name: app-server
         volumes:
             - ./backend:/app

@@ -10,7 +10,17 @@ const router   =   express.Router();
 
 import {User} from './models/mongo';
 
-app.use(function(req, res, next) {
+console.log(__dirname);
+console.log(path.dirname(__filename));
+// console.log(__filename);
+// console.log('------------------------------------------');
+// console.log(module);
+// console.log('------------------------------------------');
+// console.log(exports);
+// console.log('------------------------------------------');
+// console.log(require);
+
+app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://node.loc:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -20,6 +30,16 @@ app.get('/test', function (req, res) {
   res.sendFile(path.join(__dirname+'/test.html'));
 });
 
+// process.nextTick((a) => {
+//     console.log(a);
+// }, 'nextTick callback');
+// console.log('initialLog');
+// setTimeout(() => {
+//     console.log('setTimeout callback')
+// }, 0);
+// setImmediate(() => {
+//     console.log('setImmediate callback')
+// });
 //route() will allow you to use same path for different HTTP operation.
 //So if you have same URL but with different HTTP OP such as POST,GET etc
 //Then use route() to remove redundant code.
