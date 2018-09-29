@@ -12,6 +12,8 @@ services:
         networks:
             app_nw:
                 ipv4_address: 172.11.0.2
+        ports:
+            - "8090:8090"
     mongo:
         container_name: app-mongo-db
         ports:
@@ -23,18 +25,21 @@ services:
             app_nw:
                 ipv4_address: 172.11.0.3
     angular:
-        image: angular-coursera
-        ports:
-            - "4200:4200"
-            - "49153:49153"
+        image: gcr.io/bidder-test-216816/angular
         volumes:
-            - ./ui:/app
-        working_dir: /app
-        entrypoint: ash -c 'npm install && npm rebuild node-sass && npm run build && npm run start'
+            - ./ui:/usr/app
+        working_dir: /usr/app
+        entrypoint: ash -c 'npm run start'
         container_name: app-ui
         networks:
             app_nw:
                 ipv4_address: 172.11.0.4
+        ports:
+            - "4200:4200"
+            - "49153:49153"
+        expose:
+            - "4200"
+            - "49153"
 
 networks:
     app_nw:
