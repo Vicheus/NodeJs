@@ -5,7 +5,7 @@
     "author": "Olexandr Kononchuk <oleksandrkononchuk@gmail.com>",
     "private": true,
     "license": "MIT",
-    "main": "server.js",
+    "main": "./dist/server.js",
     "scripts": {
         "build": "tsc",
         "dev": "ts-node-dev ./src/server.ts && nodemon",

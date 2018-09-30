@@ -1,7 +1,6 @@
 import * as express from 'express';
 import * as http from 'http';
 import * as path from 'path';
-import * as morgan from 'morgan';
 
 const app      = express();
 const host     = '0.0.0.0';
@@ -23,10 +22,3 @@ const server = http.createServer(app);
 server.listen(port, host, () => {
     console.log(`Example app listening on http://${host}:${port}!`);
 });
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(`${__dirname}/public/index.html`));
-// });
-//
-// app.listen(port, () => {
-//     console.log(`Example app listening on port ${port}!`);
-// });
