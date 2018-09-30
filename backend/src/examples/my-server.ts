@@ -8,7 +8,7 @@ const port     = 8090;
 const path     = require("path");
 const router   =   express.Router();
 
-import {User} from './models/mongo';
+import {User} from '../models/mongo';
 
 console.log(__dirname);
 console.log(path.dirname(__filename));
