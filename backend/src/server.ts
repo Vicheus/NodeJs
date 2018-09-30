@@ -3,38 +3,17 @@ import * as http from 'http';
 import * as path from 'path';
 import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
+import dishRouter from './routes/dish-router';
 
 const app      = express();
 const host     = '0.0.0.0';
 const port     = 8090;
-const dishRouter = express.Router();
 
 app.use(morgan('dev'));
 
 app.use(bodyParser.json());
 
-app.all('/dishes', (req, res, next) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    next();
-});
-
-app.get('/dishes', (req, res) => {
-    res.end('Will send all information about dishes to you!');
-});
-
-app.post('/dishes', (req, res) => {
-    res.end(`Will add the dish: ${req.body.name} with details ${req.body.description}`);
-});
-
-app.put('/dishes', (req, res) => {
-    res.statusCode = 403;
-    res.end(`PUT operation is not supported on dishes`);
-});
-
-app.delete('/dishes', (req, res) => {
-    res.end('Deleting all the dishes');
-});
+app.use('/dishes', dishRouter);
 
 app.get('/dishes/:id', (req, res) => {
     res.end(`Will send information about dishe with id ${req.params.id} to you!`);
