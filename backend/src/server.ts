@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as http from 'http';
 import * as path from 'path';
+import * as fs from 'fs';
 import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import dishRouter from './routes/dish-router';
@@ -35,14 +36,24 @@ app.delete('/dishes/:id', (req, res) => {
 
 app.use(express.static(`${__dirname}/public`));
 
-app.use((req, res) => {
+app.use((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
-    res.end('<html><body><h1>This is Express!</h1></body></html>');
+    next();
 });
 
 app.get('/favicon.png', (req, res) => {
     res.sendFile(path.join(`${__dirname}/public/favicon.png`));
+});
+
+app.get('/clinic', (req, res) => {
+    fs.access(path.join(`${__dirname}/../79.clinic-doctor.html`), (err) => {
+        if (!err) {
+            res.sendFile(path.join(`${__dirname}/../79.clinic-doctor.html`));
+        } else {
+            console.log('ERRRROROROR');
+        }
+    } );
 });
 
 const server = http.createServer(app);
