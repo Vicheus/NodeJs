@@ -1,9 +1,6 @@
 import * as express from 'express';
-import * as bodyParser from 'body-parser';
 
 const dishRouter = express.Router();
-
-dishRouter.use(bodyParser.json());
 
 dishRouter.route('/')
     .all((req, res, next) => {
@@ -23,6 +20,22 @@ dishRouter.route('/')
     })
     .delete((req, res) => {
         res.end('Deleting all the dishes');
+    });
+
+dishRouter.route('/:dishId')
+    .get((req, res) => {
+        res.end(`Will send information about dish with id ${req.params.dishId} to you!`);
+    })
+    .post((req, res) => {
+        res.statusCode = 403;
+        res.end(`POST operation is not supported on /dishes/${req.params.dishId}`);
+    })
+    .put((req, res) => {
+        res.write(`Updating dish with id ${req.params.dishId}. `);
+        res.end(`Will update the dish: ${req.body.name} with details ${req.body.description}`);
+    })
+    .delete((req, res) => {
+        res.end(`Deleting the dish ${req.params.dishId}`);
     });
 
 export default dishRouter;
