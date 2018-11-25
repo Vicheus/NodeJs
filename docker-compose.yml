@@ -14,20 +14,6 @@ services:
                 ipv4_address: 172.11.0.5
         ports:
             - "8090:8090"
-#    backend:
-#        image: express
-#        container_name: app-backend
-#        volumes:
-#            - ./backend:/app
-#        working_dir: /app
-#        entrypoint: ash -c 'npm run build && npm run dev'
-#        depends_on:
-#            - mongo
-#        networks:
-#            app_nw:
-#                ipv4_address: 172.11.0.2
-#        ports:
-#            - "8090:8090"
     mongo:
         container_name: app-mongo
         ports:
