@@ -17,7 +17,7 @@ COPY . .
 RUN npm install -g @angular/cli
 RUN npm install
 # Uncomment this if you went with Option #2 in Step #2 (Windows Only)
-RUN npm rebuild node-sass --force
+#RUN npm rebuild node-sass --force
 # The default port from ng serve (4200)
 # and 49153 for Webpack Hot Module Reload
 EXPOSE 4200 49153

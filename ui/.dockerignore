@@ -5,5 +5,4 @@ package.lock.json
 /node-modules/
 /dist/
 Dockerfile
-.dockerignore
 publish.sh
