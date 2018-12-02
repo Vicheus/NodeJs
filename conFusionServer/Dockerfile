@@ -1,5 +1,7 @@
 FROM node:11-alpine as node
 
+RUN apk add python
+
 COPY package*.json /app/
 
 WORKDIR /app

@@ -7,11 +7,17 @@ import * as path from 'path';
 import dishRouter from './routes/dish-router';
 import leaderRouter from './routes/leader-router';
 import promoRouter from './routes/promo-router';
-import {NextFunction, Request, Response} from 'express';
+import { NextFunction, Request, Response } from 'express';
+import mongo from './mongo';
+import * as dotenv from 'dotenv';
 
+dotenv.config({ path: path.resolve(`${__dirname}/config/env/.env`) });
 const app      = express();
-const host     = '0.0.0.0';
-const port     = 8090;
+const host     = process.env.SERVER_HOST;
+const port     = process.env.SERVER_PORT;
+
+// mongodb connection
+mongo();
 
 app.use(logger('dev'));
 
