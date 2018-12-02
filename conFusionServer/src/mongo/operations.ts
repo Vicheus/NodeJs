@@ -20,8 +20,7 @@ export async function insertDocument(db: Db, document: any, collection: string) 
 export async function findDocuments(db: Db, collection: string) {
   try {
     const coll: Collection = db.collection(collection);
-    const result: any[] = await coll.find({}).toArray();
-    return result;
+    return coll.find({}).toArray();
   } catch (e) {
     console.log(e.message);
   }
